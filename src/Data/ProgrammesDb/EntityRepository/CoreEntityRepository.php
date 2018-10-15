@@ -448,7 +448,7 @@ QUERY;
             ->andWhere('programme.parent = :parentDbId')
             ->andWhere('programme.position ' . $filterOperation . ' :originalPosition')
             ->orderBy('programme.position', $orderDirection)
-            ->addOrderBy('programme.pid', $orderDirection)
+            ->addOrderBy('programme.pid', $orderDirection) // THIS RESULTS IN A FILESORT. REMOVE?
             ->setMaxResults(1)
             ->setParameter('parentDbId', $parentDbId)
             ->setParameter('originalPosition', $position);
